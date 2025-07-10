@@ -1,0 +1,58 @@
+#notes
+*Notes*
+*notes*
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.pyo
+
+# Virtual environment
+venv/
+.env
+.venv/
+ENV/
+env/
+*.env
+
+# Django-specific
+*.log
+db.sqlite3
+media/
+staticfiles/
+local_settings.py
+secrets.json
+
+# VSCode/PyCharm
+.vscode/
+.idea/
+
+# macOS/Linux
+.DS_Store
+*.swp
+*.swo
+
+# Node (if using React or frontend inside)
+node_modules/
+dist/
+build/
+
+# Migrations (optional — keep only if generated dynamically)
+# */migrations/__pycache__/
+# */migrations/*.pyc
+
+# Coverage/Test
+htmlcov/
+.coverage
+.tox/
+.cache/
+pytest_cache/
+
+# MyPy & Pylint
+.mypy_cache/
+.pytest_cache/
+pylint-report.txt
+
+# Docker
+*.pid
+docker-compose.override.yml
