@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 
 export default function Register() {
@@ -23,10 +23,39 @@ export default function Register() {
   };
 
   return (
-    <form onSubmit={handleRegister}>
-      <input value={username} onChange={e => setUsername(e.target.value)} placeholder="Username" />
-      <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Password" />
-      <button type="submit">Register</button>
-    </form>
+    <div className="min-h-screen flex items-center justify-center bg-base-200">
+      <form
+        onSubmit={handleRegister}
+        className="card w-96 bg-base-100 shadow-xl p-8 space-y-4"
+      >
+        <h2 className="text-2xl font-bold text-center">Register</h2>
+
+        <input
+          className="input input-bordered w-full"
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+
+        <input
+          className="input input-bordered w-full"
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+
+        <button className="btn btn-primary w-full" type="submit">
+          Register
+        </button>
+
+        <p className="text-sm text-center text-neutral-600">
+          Already a user?{" "}
+          <Link to="/login" className="link link-primary">
+            Login
+          </Link>
+        </p>
+      </form>
+    </div>
   );
 }
