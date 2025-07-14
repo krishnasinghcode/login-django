@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+import GoogleLoginButton from "../components/GoogleLoginButton";
 
 export default function Login() {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
@@ -11,11 +12,12 @@ export default function Login() {
     e.preventDefault();
     try {
       const res = await axios.post("http://localhost:8000/api/login/", {
-        username,
+        email,
         password,
       });
-      localStorage.setItem("access", res.data.token.access);
-      localStorage.setItem("refresh", res.data.token.refresh);
+      localStorage.setItem("access", res.data.access);
+      localStorage.setItem("refresh", res.data.refresh);
+
       navigate("/");
     } catch (err) {
       alert("Login failed");
@@ -32,9 +34,9 @@ export default function Login() {
 
         <input
           className="input input-bordered w-full"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
 
         <input
@@ -48,6 +50,9 @@ export default function Login() {
         <button className="btn btn-accent w-full" type="submit">
           Login
         </button>
+
+        <div className="divider">OR</div>
+        <GoogleLoginButton />
 
         <p className="text-sm text-center text-neutral-600">
           New here?{" "}

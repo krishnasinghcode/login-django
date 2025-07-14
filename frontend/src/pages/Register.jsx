@@ -4,6 +4,7 @@ import axios from "axios";
 
 export default function Register() {
   const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
@@ -12,10 +13,12 @@ export default function Register() {
     try {
       const res = await axios.post("http://localhost:8000/api/signup/", {
         username,
+        email,
         password,
       });
-      localStorage.setItem("access", res.data.token.access);
-      localStorage.setItem("refresh", res.data.token.refresh);
+      localStorage.setItem("access", res.data.access);
+      localStorage.setItem("refresh", res.data.refresh);
+
       navigate("/");
     } catch (err) {
       alert("Signup failed");
@@ -35,6 +38,13 @@ export default function Register() {
           placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+        />
+
+        <input
+          className="input input-bordered w-full"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
 
         <input
